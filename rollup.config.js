@@ -7,7 +7,7 @@ import commonjs from 'rollup-plugin-commonjs';
 export default {
   entry: 'src/main.js',
   dest: 'dest/bundle.js',
-  format: 'umd',
+  format: 'iife',
   plugins: [
       json(),
       riot(),
@@ -18,5 +18,13 @@ export default {
       }),
       commonjs(),
       babel()
+    ],
+    globals: {
+      riot: 'riot',
+      jquery: '$'
+    },
+    external: [
+      'riot',
+      'jquery'
     ]
 }

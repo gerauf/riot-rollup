@@ -5,6 +5,10 @@ var path = require('path')
 var join = path.join
 var bowerFiles = require('main-bower-files');
 var inject = require('gulp-inject');
+var del = require('del')
+var runSequence = require('run-sequence')
+var less = require('gulp-less')
+var sourcemaps = require('gulp-sourcemaps')
 
 
 gulp.task('serve', function(){
@@ -57,13 +61,47 @@ gulp.task('wiredep', function(){
              .pipe(gulp.dest('./dest'))
 })
 
-gulp.task('rollup', shell.task([
+gulp.task('rollup:clean', function(){
+  return del([
+    join('dest','bundle.js')
+  ])
+})
+
+gulp.task('rollup:c', shell.task([
   'rollup -c'
 ]));
 
+gulp.task('rollup', function(done) {
+  runSequence(
+    'rollup:clean',
+    'rollup:c',
+    done
+  )
+})
+
+gulp.task('less', function() {
+  return gulp.src(join('src','style','style.less')
+             .pipe(sourcemaps.init())
+             .pipe(less())
+             .pipe(sourcemaps.write())
+             .pipe(gulp.dest(
+               join('dest', 'css')
+             )))
+})
+
 gulp.task('watch', function(){
-  gulp.watch(['./src/**/*.tag', './src/main.js'], ['rollup']);
-  gulp.watch(['bower.json' , './src/index.html'] , ['wiredep']);
+  gulp.watch([join('src','**','*.tag'), join('src','main.js')], ['rollup']);
+  gulp.watch(['bower.json' , join('src','index.html')] , ['wiredep']);
+  gulp.watch([join('src','style','style.less')], ['less'])
 });
 
-gulp.task('default', ['watch', 'serve', 'wiredep', 'rollup']);
+gulp.task('default', function(done){
+  runSequence(
+    'rollup',
+    'less',
+    'wiredep',
+    'serve',
+    'watch',
+    done
+  )
+});
