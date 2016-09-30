@@ -1,0 +1,38 @@
+{
+  "name": "riot-rollup",
+  "description": "",
+  "main": "src/main.js",
+  "authors": [
+    "Fergus Orbach <fo4786@gmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Riot",
+    "ES6",
+    "Rollup.js",
+    "Bower",
+    "NPM"
+  ],
+  "homepage": "https://github.com/gerauf/riot-rollup",
+  "moduleType": [
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.min.css",
+        "dist/js/bootstrap.min.js"
+      ]
+    }
+  }
+}
