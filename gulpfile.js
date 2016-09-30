@@ -10,15 +10,15 @@ gulp.task('server', function(){
       .pipe(webserver({
         livereload: true,
         open: true
-      }))
-})
+      }));
+});
 
 gulp.task('rollup', shell.task([
   'rollup -c'
-]))
+]));
 
 gulp.task('watch', function(){
   gulp.watch(['./src/**/*.tag', './src/main.js'], ['rollup'])
-})
+});
 
-gulp.task('default', ['watch', 'server', 'rollup'])
+gulp.task('default', ['watch', 'server', 'rollup']);
