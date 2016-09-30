@@ -1,0 +1,23 @@
+{
+  "name": "riot-rollup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "roll": "rollup -c"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "riot": "^2.6.2"
+  },
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^5.0.4",
+    "rollup-plugin-json": "^2.0.2",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-riot": "^0.4.3"
+  }
+}
