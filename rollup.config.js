@@ -5,7 +5,7 @@ import npm from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 
 export default {
-  entry: 'src/main.js',
+  entry: 'src/app/app.js',
   dest: 'dest/bundle.js',
   format: 'iife',
   plugins: [

@@ -1,5 +1,5 @@
 import riot from 'riot'
 import $ from 'jquery'
-import './app.tag'
+import './components/app.tag'
 
 riot.mount('app')

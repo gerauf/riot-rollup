@@ -80,17 +80,17 @@ gulp.task('rollup', function(done) {
 })
 
 gulp.task('less', function() {
-  return gulp.src(join('src','style','style.less')
+  return gulp.src(join('src','style','style.less'))
              .pipe(sourcemaps.init())
              .pipe(less())
              .pipe(sourcemaps.write())
              .pipe(gulp.dest(
                join('dest', 'css')
-             )))
+             ))
 })
 
 gulp.task('watch', function(){
-  gulp.watch([join('src','**','*.tag'), join('src','main.js')], ['rollup']);
+  gulp.watch([join('src','**','*.tag'), join('src','app','app.js')], ['rollup']);
   gulp.watch(['bower.json' , join('src','index.html')] , ['wiredep']);
   gulp.watch([join('src','style','style.less')], ['less'])
 });
